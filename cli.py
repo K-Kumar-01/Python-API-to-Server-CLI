@@ -132,6 +132,15 @@ def save_direct(
         except FileExistsError:
             raise Exception("The FastAPI file already exists")
 
+    try:
+        with open(f'./build/requirements.txt', "x") as f:
+            requirements = """fastapi
+uvicorn
+"""
+            f.write(requirements)
+    except FileExistsError:
+        raise Exception("Requirements file already exists")
+
     create_fastapi_file(class_name=module_name,
                         module_name=class_names[0], apis_list=apis_list, store_path='./build/app.py')
 
