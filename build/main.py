@@ -12,7 +12,7 @@ def hello_world():
     
 # WARNING:DO NOT EDIT THE BELOW LINE
 app.add_api_route(
-        path="/",
+        path="/test",
         endpoint=myservice_func.predict,
         methods=['GET'],
     )

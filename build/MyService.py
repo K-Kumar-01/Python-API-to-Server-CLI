@@ -8,7 +8,7 @@ def api(route, http_methods, *args, **kwargs):
 
 
 class MyService():
-    @api(route="/", http_methods=['GET'])
+    @api(route="/test", http_methods=['GET'])
     def predict():
         return {'Hello': 'World'}
 
