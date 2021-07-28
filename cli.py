@@ -142,7 +142,7 @@ uvicorn
         raise Exception("Requirements file already exists")
 
     create_fastapi_file(class_name=module_name,
-                        module_name=class_names[0], apis_list=apis_list, store_path='./build/app.py')
+                        module_name=class_names[0], apis_list=apis_list, store_path='./build/main.py')
 
 
 def cli():
