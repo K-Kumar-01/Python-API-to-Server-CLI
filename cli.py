@@ -1,4 +1,5 @@
 import argparse
+import os
 
 from inspect import isclass
 from types import FunctionType
@@ -135,14 +136,29 @@ def save_direct(
     try:
         with open(f'./build/requirements.txt', "x") as f:
             requirements = """fastapi
-uvicorn
-"""
+uvicorn"""
             f.write(requirements)
     except FileExistsError:
         raise Exception("Requirements file already exists")
 
+
     create_fastapi_file(class_name=module_name,
                         module_name=class_names[0], apis_list=apis_list, store_path='./build/main.py')
+
+    try:
+        with open(f'./build/vercel.json', "x") as f:
+            requirements = """{
+    "builds": [
+      {"src": "/main.py", "use": "@vercel/python"}
+    ],
+    "routes": [
+      {"src": "/(.*)", "dest": "/main.py"}
+    ]
+  }"""
+            f.write(requirements)
+    except FileExistsError:
+        raise Exception("Requirements file already exists")
+
 
 
 def cli():
@@ -158,7 +174,7 @@ def cli():
         save_direct(f'{args.build}')
 
     if args.deploy:
-        pass
+        os.system('vercel --version')
 
 
 if __name__ == "__main__":
