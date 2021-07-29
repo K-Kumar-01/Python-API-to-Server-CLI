@@ -174,7 +174,7 @@ def cli():
         save_direct(f'{args.build}')
 
     if args.deploy:
-        os.system('vercel --version')
+        os.system('vercel ./build')
 
 
 if __name__ == "__main__":
