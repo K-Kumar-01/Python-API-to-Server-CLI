@@ -49,3 +49,11 @@ The build can be run locally by doing the following:
 3. Run `uvicorn main:app --reload`
 
 The server will be running on `localhost:8000` 
+
+
+`mylibrary --deploy`
+This command deploys the build folder on `vercel`.
+**Note**: Be sure to install `vercel` globally using `npm i -g vercel` or `yarn global add vercel`.
+The command runs `vercel ./build` internally.
+Some questions will be asked by vercel-cli.
+If successful, one can visit the url and see the project running.
